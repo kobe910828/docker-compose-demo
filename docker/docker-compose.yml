@@ -1,0 +1,17 @@
+version: "3"
+services:
+  eureka-server:
+    image: demo.docker.com/eureka-server
+    restart: always
+    container_name: eureka-server
+    hostname: discovery
+    ports:
+      - "8761:8761"
+  service-hi:
+    image: demo.docker.com/service-hi
+    restart: always
+    container_name: service-hi
+    ports:
+      - "8762:8762"
+    links:
+      - eureka-server
